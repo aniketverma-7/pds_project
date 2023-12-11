@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Device</title>
+</head>
+<body>
+    <h1>Add Device</h1>
+    <form method="post" action="{{ url_for('add_device') }}">
+        <label for="location">Location:</label>
+        <select name="location" id="location">
+            {% for location in locations %}
+                <option value="{{ location }}">{{ location }}</option>
+            {% endfor %}
+        </select><br>
+
+        <label for="device_type">Device Type:</label>
+        <select name="device_type" id="device_type">
+            {% for type in device_types %}
+                <option value="{{ type }}">{{ type }}</option>
+            {% endfor %}
+        </select><br>
+
+        <label for="model">Model:</label>
+        <select name="model" id="model">
+            {% for model in device_models[device_types[0]] %}
+                <option value="{{ model }}">{{ model }}</option>
+            {% endfor %}
+        </select><br>
+
+        <input type="submit" value="Add Device">
+    </form>
+</body>
+</html>
